@@ -1,0 +1,98 @@
+yum repolist 
+    4  firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.2.4" service name="ssh" reject'
+    5  firewall-cmd --reload 
+    6  success
+    7  firewall-cmd --list-all
+    8  yum install nfs-utils -y
+    9  systemctl restart nfs
+   10  systemctl enable nfs
+   11  systemctl status nfs
+   12  mkdir /tmp/mynfs
+   13  vim /etc/exports
+   14  exportf1-r
+   15  exportfs -r
+   16* firewall-cmd --permanent --add-service=
+   17  firewall-cmd --reload 
+   18  firewall-cmd --list-all
+   19  systemctl restart nfs
+   20  firewall-cmd --reload 
+   21  yum install samba-client cifs-utils -y
+   22  mkdir /data
+   23  mount -o username=samual //server.example.com/ARTIST /data/
+   24  df -h
+   25  umount /data/
+   26  df -h
+   27  vim /etc/fstab 
+   28  mount -av
+   29  df -h
+   30  mkdir /tmp/akon
+   31  cat > /root/secrete
+   32  vim /etc/fstab 
+   33  mount -av
+   34  mkdir /mnt/akon
+   35  mount -av
+   36  df -h
+   37  rm -rvf /tmp/akon
+   38  su - swapsg 
+   39  cd
+   40  curl www1.example.com
+   41  curl server
+   42  curl server1.example.com
+   43  vim /etc/hosts
+   44  curl server1.example.com
+   45  vim /etc/hos]ts
+   46  vim /etc/hosts
+   47  firefox
+   48  ip a
+   49  curl -k https://server1.example.com
+   50  lsblk
+   51  yum install iscsi-initiator* -y
+   52  vim /etc/iscsi/initiatorname.iscsi 
+   53  systemctl restart iscsi
+   54  systemctl enable iscsi
+   55  systemctl restart iscsid
+   56  systemctl enable iscsid
+   57  systemctl status iscsid
+   58  systemctl status iscsi
+   59  systemctl restart iscsid
+   60  systemctl status iscsid
+   61  systemctl restart iscsi
+   62  systemctl status iscsi
+   63  systemctl start iscsi
+   64  systemctl status iscsi
+   65  yum remove iscsi-initiator-utils
+   66  yum install iscsi* -y
+   67  systemctl restart iscsi
+   68  systemctl status iscsi
+   69  systemctl status iscsid
+   70  systemctl restart iscsid
+   71  systemctl enable iscsid
+   72  systemctl enable iscsi
+   73  systemctl enable iscsid
+   74  systemctl restart iscsid
+   75  systemctl enable iscsid
+   76  systemctl status iscsid
+   77  man iscsiadm
+   78  iscsiadm --mode discoverydb --type sendtargets --portal 192.168.13.130 --discover
+   79  man iscsiadm
+   80  iscsiadm --mode node --targetname iqn.2017-18.com.example.network1:system2 --portal 192.168.13.130:3260 --login
+   81  lsblk
+   82  parted /dev/sdb
+   83  partprobe /dev/sdb
+   84  partprobe /dev/sdb1
+   85  mkfs.ext4 /dev/sdb1
+   86  lsblk
+   87  mkdir  /shareddisk
+   88  mount /dev/sdb1 /shareddisk/
+   89  df -h
+   90  umount /shareddisk/
+   91  vim /etc/fstab 
+   92  mount -av
+   93  df -h
+   94  man iscsiadm
+   95  iscsiadm --mode node --targetname iqn.2017-18.com.example.network1:system2 --portal 192.168.13.130:3260 --logout
+   96  yum install mariadb -y
+   97  mysql -uchristopher -ppassword -h192.168.13.131
+   98  mysql -uchristopher -ppassword -h192.168.13.130
+   99  mysql -utom -pfedora -h192.168.13.130
+  100  curl -k https://server1.example.com

@@ -1,0 +1,251 @@
+3  cd /etc/yum.repos.d/
+    4  ls
+    5  cat CentOS-fasttrack.repo 
+    6  cat > sample.repo
+    7  yum repolist 
+    8  scp root@client:/etc/yum.repos.d
+    9  scp root@client:/etc/yum.repos.d/
+   10  scp root@client.example.com:/etc/yum.repos.d/
+   11  scp sample.repo root@client.example.com:/etc/yum.repos.d/
+   12  cd
+   13  man firewalld.richlanguage
+   14  firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.2.4" service name="ssh" reject'
+   15  firewall-cmd --reload 
+   16  firewall-cmd --list-all
+   17  mkdir /nfsdata
+   18  mount client.example.com:/tmp/mynfs /nfsdata
+   19  df -
+   20  df -h
+   21  umount /nfsdata/
+   22  vim /etc/fstab 
+   23  mount -av
+   24  df -h
+   25  mount -av
+   26  vim /etc/fstab 
+   27  mount -av
+   28  df -h
+   29  mkdir /concert
+   30  yum install samba samba-client -y
+   31  systemctl restart smb nmb
+   32  systemctl enable smb nmb
+   33  systemctl status smb nmb
+   34  ls -Zd /concert/
+   35  man semanage fcontext
+   36  semanage fcontext -a -t samba_share_t "/concert(/.*)?"
+   37  restorecon -rv /concert/
+   38  ls -Zd /concert/
+   39  vim /etc/samba/smb.conf
+   40  testparm -t
+   41  vim /etc/samba/smb.conf
+   42  testparm -t
+   43  systemctl restart smb nmb
+   44  firewall-cmd --permanent --add-service=nfs
+   45  firewall-cmd --permanent --add-service=samba
+   46  firewall-cmd --reload 
+   47  useradd samual
+   48  smbpasswd -a sam
+   49  smbpasswd -a samual
+   50  systemctl restart smb nmb
+   51  firewall-cmd --reload 
+   52  mkdir /dockyard
+   53  semanage fcontext -a -t samba_share_t "/dockyard(/.*)?"
+   54  restorecon -rv /concert/
+   55  restorecon -rv /dockyard/
+   56  ls -Zd /dockyard/
+   57  vim /etc/samba/smb.conf
+   58  testparm -t
+   59  useradd mitchel  
+   60  smbpasswd -a mitchel  
+   61  useradd catherine
+   62  smbpasswd -a catherine
+   63  getfacl 
+   64  getfacl /dockyard/
+   65  setfacl -m u:mitchel:rwx /dockyard/
+   66  setfacl -m u:catherine:r-x /dockyard/
+   67  getfacl /dockyard/
+   68  systemctl restart smb nmb
+   69  firewall-cmd ---reload 
+   70  firewall-cmd --reload 
+   71  tail /etc/samba/smb.conf
+   72  yum install httpd -y
+   73  vim /etc/hosts
+   74  cat > /var/www/html/index.html
+   75  cd /etc/httpd/conf.d/
+   76  cp /usr/share/doc/httpd-2.4.6/httpd-vhosts.conf webh.conf
+   77  vim webh.conf 
+   78  systemctl restart httpd
+   79  systemctl enable httpd
+   80  systemctl status httpd
+   81  firewall-cmd --permanent --add-service=http
+   82  firewall-cmd --permanent --add-port=80/tcp
+   83  firewall-cmd --reload 
+   84  curl www1.example.com
+   85  curl http://www1.example.com
+   86  curl http://www1.example.com:80
+   87  mkdir /var/www/practice
+   88  cat > /var/www/practice/index.html
+   89  cp webh.conf virtualh.conf
+   90  vmi virtualh.conf 
+   91  vim virtualh.conf 
+   92  httpd t
+   93  httpd -t
+   94  vim /etc/hosts
+   95  systemctl restart httpd
+   96  firewall-cmd --reload 
+   97  curl server1.example.com
+   98  mkdir /var/www/html/notes
+   99  touch /var/www/html/notes/file{1..6}
+  100  vim webh.conf 
+  101  httpd -t
+  102  systemctl restart htpd
+  103  systemctl restart httpd
+  104  firewall-cmd --reload 
+  105  yum install mod_ssl -y
+  106  mkdir /root/sam
+  107  cd /root/sam/
+  108  ls
+  109  man req
+  110  openssl genrsa -out sam.key 2048
+  111  sl
+  112  ls
+  113  man req
+  114  openssl req -new -key sam.key -out sam.csr
+  115  ls
+  116  man x509
+  117  openssl x509 -req -in sam.csr -signkey sam.key --days 365 -out sam.crt
+  118  openssl x509 -req -in sam.csr -signkey sam.key -days 365 -out sam.crt
+  119  ls
+  120  cd -
+  121  ls
+  122  cp ssl.conf myssl.conf
+  123  vim myssl.conf 
+  124  pwd
+  125  vim myssl.conf 
+  126  cd -
+  127  ls
+  128  cp sam.key /etc/pki/tls/private/
+  129  cp sam.crt /etc/pki/tls/certs/
+  130  cd -
+  131  httpd -t
+  132  ip a
+  133  systemctl restart httpd
+  134  vim myssl.conf 
+  135  systemctl restart httpd
+  136  systemctl enable httpd
+  137  firewall-cmd --reload 
+  138  ip a
+  139  curl -k https://server1.example.com
+  140  firewall-cmd --permanent --add-port=443/tcp
+  141  firewall-cmd --reload 
+  142  systemctl restart httpd
+  143  firewall-cmd --reload 
+  144  curl -k https://server1.example.com
+  145  vim myssl.conf 
+  146  httpd -t
+  147  systemctl restart httpd
+  148  firewall-cmd --reload 
+  149  curl -k https://server1.example.com
+  150  la
+  151  ls
+  152  vim /root/sample.wsgi
+  153  mkdir /var/www/dynamic/
+  154  cp /root/sample.wsgi /var/www/dynamic/webapp.wsgi
+  155  restorecon /var/www/
+  156  restorecon -Rv /var/www/
+  157  cp webh.conf wsg.conf
+  158  vim wsg.conf 
+  159  httpd -t
+  160  yum install mod_wsgi -y
+  161  systemctl restart httpd
+  162  httpd -t
+  163  vim /etc/hosts
+  164  vim ../conf/httpd.conf 
+  165  ss -tunlp|grep 8998
+  166  man semanage port
+  167  semanage port -a -t http_port_t -p tcp 8998
+  168  semanage port -l|grep http
+  169  firewall-cmd --permanent --add-port=8998/tcp
+  170  firewall-cmd --reload 
+  171  systemctl restart http
+  172  systemctl restart httpd
+  173  firewall-cmd --reload 
+  174  cat /etc/hosts
+  175  curl webappX.example.com
+  176  curl webappX.example.com:8998
+  177  vim wsg.conf 
+  178  rm -rvf wsg.conf 
+  179  cp /usr/share/doc/httpd-2.4.6/httpd-vhosts.conf wsgi.conf
+  180  vim wsgi.conf 
+  181  httpd -t
+  182  vim /etc/hosts
+  183  systemctl restart httpd
+  184  systemctl enable httpd
+  185  firewall-cmd --list-all
+  186  semanage port -l |grep http
+  187  firewall-cmd --reload 
+  188  vim virtualh.conf 
+  189  lsblk
+  190  vgcreate vg1 /dev/sdb
+  191  vgs
+  192  lvcreate -L 2G -n iscsi_block vg1
+  193  lvs
+  194  cd
+  195  targetcli
+  196  systemctl restart target
+  197  systemctl enable target
+  198  firewall-cmd --permanent --add-port=3260/tcp
+  199  firewall-cmd --reload 
+  200  vim /root/condition
+  201  sh /root/condition 
+  202  sh /root/condition Linux
+  203  sh /root/condition Fedora
+  204  sh /root/condition Fedosda
+  205  vim /root/condition
+  206  sh /root/condition Fedosda
+  207  sh /root/condition 
+  208  vim /root/condition
+  209  sh /root/condition 
+  210  vim /root/condition
+  211  sh /root/condition 
+  212  vim /root/condition
+  213  sh /root/condition 
+  214  vim /root/condition
+  215  sh /root/condition 
+  216  sh /root/condition sdf
+  217  vim /root/usersauto
+  218  cd
+  219  cat > test
+  220  cat test 
+  221  vim usersauto 
+  222  sh usersauto 
+  223  sh usersauto asjkfa
+  224  sh usersauto test
+  225  tail /etc/passwd
+  226  yum install mariadb -y
+  227  yum install mariadb-server -y
+  228  systemctl restart mariadb
+  229  systemctl enable mariadb
+  230  systemctl estat mariadb
+  231  systemctl statust mariadb
+  232  systemctl status mariadb
+  233  mysql_secure_installation 
+  234  mysql -uroot -predha
+  235  mysql -uroot -predhat
+  236  mysql -uroot -predhat engineering>sample.dump
+  237  mysqldump -uroot -predhat engineering>sample.dump
+  238  ls
+  239  mysql -uroot -predhat
+  240  mysql -uroot -predhat new<sample.dump
+  241  mysql -uroot -predhat
+  242  firewall-cmd --permanent --add-service=mysql
+  243  firewall-cmd --reload 
+  244  mysql -utom -pfedora
+  245  mysql -u susan -p 
+  246  mysql -u christopher -p
+  247  man firewalld.richlanguage
+  248  firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.13.131" forward-port to-port="80" protocol="tcp" port="5343""
+  249  firewall-cmd --reload 
+  250  firewall-cmd --list-all
+  251  systemctl restart httpd.service 
+  252  firewall-cmd --reload 
+  253  history 
